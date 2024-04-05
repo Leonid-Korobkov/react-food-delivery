@@ -15,7 +15,7 @@ function Menu() {
           id={1}
           name="Бургер"
           description="Булочка с курицей, помидорами, сыром, салатом и соусом бургер"
-          image="/public/product-demo.png"
+          image="/product-demo.png"
           price={100}
           rating={5}
         ></ProductCard>

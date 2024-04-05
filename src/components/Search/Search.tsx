@@ -16,7 +16,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(function Search({ isVal
         })}
         {...props}
       />
-      <img className={st.searchIcon} src="/public/search-icon.svg" alt="Иконка поиска" />
+      <img className={st.searchIcon} src="/search-icon.svg" alt="Иконка поиска" />
     </div>
   )
 })

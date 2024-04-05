@@ -15,22 +15,22 @@ function Layout() {
     <div className={st.layout}>
       <div className={st.sidebar}>
         <div className={st.user}>
-          <img className={st.avatar} src="/public/avatar.png" alt="Аватар пользователя" />
+          <img className={st.avatar} src="/avatar.png" alt="Аватар пользователя" />
           <div className={st.name}>Leonid Korobkov</div>
           <div className={st.email}>Korobkov@example.com</div>
         </div>
         <div className={st.menu}>
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/'}>
-            <img src="/public/menu-icon.svg" alt="Иконка меню" />
+            <img src="/menu-icon.svg" alt="Иконка меню" />
             Menu
           </NavLink>
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/cart'}>
-            <img src="/public/cart-icon.svg" alt="Иконка корзины" />
+            <img src="/cart-icon.svg" alt="Иконка корзины" />
             Cart
           </NavLink>
         </div>
         <Button className={st.exit}>
-          <img src="/public/exit-icon.svg" alt="Иконка выходы" />
+          <img src="/exit-icon.svg" alt="Иконка выходы" />
           Выйти
         </Button>
       </div>

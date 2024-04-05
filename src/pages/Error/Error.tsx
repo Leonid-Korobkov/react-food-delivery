@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import st from './Error.module.css'
-import pizzaImage from '/public/pizza.png' // Подставьте свой путь к изображению
+import pizzaImage from '/pizza.png' // Подставьте свой путь к изображению
 
 function Error() {
   return (
