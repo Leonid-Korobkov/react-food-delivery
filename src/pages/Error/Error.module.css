@@ -1,0 +1,35 @@
+.errorContainer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.errorImage {
+  width: 200px;
+  margin-bottom: 20px;
+  animation: shake 0.5s infinite alternate; /* Анимация - покачивание */
+}
+
+@keyframes shake {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+.errorHeading {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.errorMessage {
+  font-size: 1.2rem;
+  color: var(--text-secondary-color);
+  margin-bottom: 20px;
+}
+
+.homeLink {
+  color: #007bff;
+  text-decoration: underline;
+}
