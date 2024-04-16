@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import st from './LeftPanel.module.css'
+import st from './Menu.module.css'
 import Button from '../../components/Button/Button'
 import { useEffect } from 'react'
 import cn from 'classnames'
@@ -22,11 +22,11 @@ function Layout() {
         <div className={st.menu}>
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/'}>
             <img src="/menu-icon.svg" alt="Иконка меню" />
-            Menu
+            Меню
           </NavLink>
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/cart'}>
             <img src="/cart-icon.svg" alt="Иконка корзины" />
-            Cart
+            Корзина
           </NavLink>
         </div>
         <Button className={st.exit}>

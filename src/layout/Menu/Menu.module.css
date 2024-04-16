@@ -1,9 +1,14 @@
 .layout {
   display: flex;
   min-height: 100vh;
+  height: calc(var(--vh, 1vh)* 100);
+  overflow: hidden;
+  position: relative;
+  display: flex;
 }
 
 .sidebar {
+  overflow: auto;
   padding: 30px;
   width: 250px;
   border-right: 1px solid var(--separator-color);
@@ -78,6 +83,13 @@
 .content {
   padding: 40px 60px;
   width: 100%;
+  overflow: auto;
+}
+
+@media (max-width: 767px){
+  .content {
+    padding: 20px 20px;
+  }
 }
 
 .cart-count {

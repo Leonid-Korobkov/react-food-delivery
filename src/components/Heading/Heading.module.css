@@ -5,4 +5,5 @@
   font-weight: 600;
   line-height: 120%;
   margin: 0;
+  flex: 1 1 auto;
 }
