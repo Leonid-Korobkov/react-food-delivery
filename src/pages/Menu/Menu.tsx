@@ -16,8 +16,8 @@ function Menu() {
     try {
       setIsLoading(true)
       const { data } = await axios.get<IProduct[]>(`${baseUrl}/products`)
-      await new Promise((resolve) => setTimeout(resolve, 1000))
       setProducts(data)
+      // await new Promise((resolve) => setTimeout(resolve, 1000))
       setIsLoading(false)
     } catch (e) {
       console.log(e)
