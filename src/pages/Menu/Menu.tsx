@@ -5,22 +5,28 @@ import Search from '../../components/Search/Search'
 import { baseUrl } from '../../helpers/API'
 import st from './Menu.module.css'
 import { IProduct } from '../../interfaces/IProduct'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import ProductSkeleton from '../../components/Skeletons/ProductSkeleton/ProductSkeleton.tsx'
+import MenuList from './MenuList/MenuList.tsx'
 
 function Menu() {
   const [products, setProducts] = useState<IProduct[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isError, setIsError] = useState<string | undefined>()
 
   async function getProducts() {
     try {
       setIsLoading(true)
       const { data } = await axios.get<IProduct[]>(`${baseUrl}/products`)
       setProducts(data)
-      // await new Promise((resolve) => setTimeout(resolve, 1000))
+      //await new Promise((resolve) => setTimeout(resolve, 10000))
       setIsLoading(false)
     } catch (e) {
       console.log(e)
+
+      if (e instanceof AxiosError) {
+        setIsError(e.message)
+      }
       return
     }
   }
@@ -37,22 +43,14 @@ function Menu() {
       </div>
 
       <div className={st.menuList}>
+        {isError && <div>{isError}</div>}
+
         {isLoading &&
+          !isError &&
           // generate 10 skeletons
           Array.from({ length: 10 }, (_, index) => index).map((_, i) => <ProductSkeleton key={i} />)}
-        {!isLoading &&
-          products.map((p, index) => (
-            <ProductCard
-              key={p.id}
-              id={p.id}
-              name={p.name}
-              description={p.ingredients.join(', ')}
-              image={p.image}
-              price={p.price}
-              rating={p.rating}
-              style={{ animationDelay: `${index * 0.1}s` }} // добавляем задержку
-            />
-          ))}
+
+        {!isLoading && <MenuList products={products} />}
       </div>
     </>
   )

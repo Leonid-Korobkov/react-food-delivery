@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import st from './ProductCard.module.css'
-import { CSSProperties, useEffect, useState } from 'react'
+import { CSSProperties, useState } from 'react'
 import Skeleton from '../Skeletons/Skeleton/Skeleton'
 import cn from 'classnames'
 
@@ -15,12 +15,7 @@ interface ProductCardProps {
 }
 
 function ProductCard(props: ProductCardProps) {
-  const [imageLoaded, setImageLoaded] = useState(false)
-  // const [componentLoaded, setComponentLoaded] = useState(false)
-
-  // useEffect(() => {
-  //   setComponentLoaded(true)
-  // }, [])
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false)
 
   const handleImageLoad = () => {
     setImageLoaded(true)
@@ -28,7 +23,6 @@ function ProductCard(props: ProductCardProps) {
 
   return (
     <Link to={`/product/${props.id}`} className={st.link}>
-      {/* <div className={cn(st.card, componentLoaded && st.cardVisible)} style={props.style}> */}
       <div className={cn(st.card)} style={props.style}>
         <div className={st.head}>
           <img
