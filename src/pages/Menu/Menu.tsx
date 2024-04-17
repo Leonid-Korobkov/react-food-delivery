@@ -51,7 +51,6 @@ function Menu() {
               image={p.image}
               price={p.price}
               rating={p.rating}
-              className={'test'}
             />
             // </CSSTransition>
           ))}
