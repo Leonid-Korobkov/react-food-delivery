@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import st from './ProductCard.module.css'
-import { useState } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import Skeleton from '../Skeletons/Skeleton/Skeleton'
+import cn from 'classnames'
 
 interface ProductCardProps {
   id: number
@@ -10,10 +11,16 @@ interface ProductCardProps {
   image: string
   price: number
   rating: number
+  style: CSSProperties
 }
 
 function ProductCard(props: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  // const [componentLoaded, setComponentLoaded] = useState(false)
+
+  // useEffect(() => {
+  //   setComponentLoaded(true)
+  // }, [])
 
   const handleImageLoad = () => {
     setImageLoaded(true)
@@ -21,7 +28,8 @@ function ProductCard(props: ProductCardProps) {
 
   return (
     <Link to={`/product/${props.id}`} className={st.link}>
-      <div className={st.card}>
+      {/* <div className={cn(st.card, componentLoaded && st.cardVisible)} style={props.style}> */}
+      <div className={cn(st.card)} style={props.style}>
         <div className={st.head}>
           <img
             style={{ opacity: imageLoaded ? '1' : '0' }}

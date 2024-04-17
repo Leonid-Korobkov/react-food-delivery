@@ -41,8 +41,7 @@ function Menu() {
           // generate 10 skeletons
           Array.from({ length: 10 }, (_, index) => index).map((_, i) => <ProductSkeleton key={i} />)}
         {!isLoading &&
-          products.map((p) => (
-            // <CSSTransition key={p.id} in={(true)} appear={true} timeout={500} classNames="fade">
+          products.map((p, index) => (
             <ProductCard
               key={p.id}
               id={p.id}
@@ -51,8 +50,8 @@ function Menu() {
               image={p.image}
               price={p.price}
               rating={p.rating}
+              style={{ animationDelay: `${index * 0.1}s` }} // добавляем задержку
             />
-            // </CSSTransition>
           ))}
       </div>
     </>
