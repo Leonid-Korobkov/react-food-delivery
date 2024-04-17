@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Heading from '../../components/Heading/Heading'
-import ProductCard from '../../components/ProductCard/ProductCard'
 import Search from '../../components/Search/Search'
 import { baseUrl } from '../../helpers/API'
 import st from './Menu.module.css'
