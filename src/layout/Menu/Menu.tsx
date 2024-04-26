@@ -7,9 +7,7 @@ import cn from 'classnames'
 function Layout() {
   const location = useLocation()
 
-  useEffect(() => {
-    console.log(location)
-  }, [location])
+  useEffect(() => {}, [location])
 
   return (
     <div className={st.layout}>
@@ -31,7 +29,7 @@ function Layout() {
         </div>
         <Button className={st.exit}>
           <img src="/exit-icon.svg" alt="Иконка выходы" />
-          Выйти
+          <span>Выйти</span>
         </Button>
       </div>
       <div className={st.content}>

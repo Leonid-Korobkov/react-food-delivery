@@ -25,7 +25,9 @@
   background: var(--primary-color);
 }
 
-.btn--accent:hover {
-  background: var(--primary-hover-color);
-  transform: scale(1.05);
+@media (any-hover: hover) {
+  .btn--accent:hover {
+    background: var(--primary-hover-color);
+    transform: scale(1.05);
+  }
 }
