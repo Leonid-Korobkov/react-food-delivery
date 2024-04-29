@@ -4,7 +4,7 @@
     "name": "Спайси чикен BBQ",
     "price": 779,
     "ingredients": "Курица, бекон, сыр моцарелла, томатный соус, зеленый перец, халапеньо, сыр чеддер, соус BBQ",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/1",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/1.jpg",
     "rating": 4.7
   },
   {
@@ -12,7 +12,7 @@
     "name": "БАРБЕКЮ БИФ",
     "price": 689,
     "ingredients": "Говядина, сыр моцарелла, соус барбекю, томатный соус, лук",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/2",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/2.jpg",
     "rating": 4.8
   },
   {
@@ -20,7 +20,7 @@
     "name": "ЦЫПЛЕНОК РАНЧ",
     "price": 759,
     "ingredients": "Курица, сыр моцарелла, соус ранч, сливочный соус альфредо, томаты",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/3",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/3.jpg",
     "rating": 4.9
   },
   {
@@ -28,7 +28,7 @@
     "name": "АМЕРИКАНА ФРЕШ",
     "price": 529,
     "ingredients": "Пепперони, ветчина, сыр моцарелла, томатный соус, сладкий зеленый перец",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/4",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/4.jpg",
     "rating": 4.4
   },
   {
@@ -36,7 +36,7 @@
     "name": "Цезарь",
     "price": 779,
     "ingredients": "Курица, бекон, сыр моцарелла, сливочный соус, голубой сыр, сыр пармезан, салат айсберг",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/5",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/5.jpg",
     "rating": 4.8
   },
   {
@@ -44,7 +44,7 @@
     "name": "Фермерская Экстра",
     "price": 689,
     "ingredients": "Курица, бекон, сыр моцарелла, сливочный соус, голубой сыр, сыр пармезан, салат айсберг",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/6",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/6.jpg",
     "rating": 4.5
   },
 
@@ -53,7 +53,7 @@
     "name": "Цыпленок песто",
     "price": 779,
     "ingredients": "Курица, сыр моцарелла, томатный соус, томаты, сыр фета, соус песто, руккола",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/7",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/7.jpg",
     "rating": 4.7
   },
   {
@@ -61,7 +61,7 @@
     "name": "ЛЮБИТЕЛИ ОВОЩЕЙ",
     "price": 689,
     "ingredients": "Сыр моцарелла, томатный соус, сладкий зеленый перец, красный лук, томаты, маслины, грибы",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/8",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/8.jpg",
     "rating": 4.8
   },
   {
@@ -69,7 +69,7 @@
     "name": "Цыпленок Карри",
     "price": 759,
     "ingredients": "Курица, сыр моцарелла, соус карри, томатный соус, томаты, зеленый перец, лук",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/9",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/9.jpg",
     "rating": 4.9
   },
   {
@@ -77,7 +77,7 @@
     "name": "ДЖУЛЬЕТТА",
     "price": 689,
     "ingredients": "Ветчина, сыр моцарелла, сливочный соус альфредо, грибы",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/10",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/10.jpg",
     "rating": 4.4
   },
   {
@@ -85,7 +85,7 @@
     "name": "Болоньезе",
     "price": 759,
     "ingredients": "Сыр моцарелла, соус болоньезе (говядина, курица, томатный соус, лук, чеснок), томаты, зеленый перец",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/11",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/11.jpg",
     "rating": 4.8
   },
   {
@@ -93,7 +93,7 @@
     "name": "Хат Карри с ананасами",
     "price": 759,
     "ingredients": "Курица, сыр моцарелла, соус карри, томатный соус, ананасы",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/12",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/12.jpg",
     "rating": 4.5
   },
 
@@ -102,7 +102,7 @@
     "name": "БИГ БИФ",
     "price": 799,
     "ingredients": "Говядина, сыр моцарелла, бургер соус, маринованные огурцы, красный лук, жареный лук",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/13",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/13.jpg",
     "rating": 4.7
   },
   {
@@ -110,7 +110,7 @@
     "name": "ГАВАЙСКАЯ",
     "price": 689,
     "ingredients": "Ветчина, сыр моцарелла, томатный соус, ананас",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/14",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/14.jpg",
     "rating": 4.8
   },
   {
@@ -118,7 +118,7 @@
     "name": "ЧЕТЫРЕ СЫРА",
     "price": 759,
     "ingredients": "Моцарелла, пармезан, чеддер, сыр с голубой плесенью, томатный соус",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/15",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/15.jpg",
     "rating": 4.9
   },
   {
@@ -126,7 +126,34 @@
     "name": "ЕВРОПЕЙСКАЯ",
     "price": 529,
     "ingredients": "Ветчина, сыр моцарелла, томатный соус, грибы, томаты",
-    "image": "https://react-food-delivery-one.vercel.app/productsImg/16",
+    "image": "https://react-food-delivery-one.vercel.app/productsImg/16.jpg",
     "rating": 4.4
   }
 ]
+
+{{#is request.params.id '1'}}
+      {
+      "id": 1,
+      "name": "Наслаждение",
+      "price": 300,
+      "ingredients": ["салями", "руккола", "помидоры", "оливки"],
+      "image": "https://cdn-bucket.hb.ru-msk.vkcs.cloud/purple-images/demo/food/food1.png",
+      "rating": 4.7
+  }
+{{else is request.params.id '2'}}
+      {
+      "id": 2,
+      "name": "Наслаждение 2",
+      "price": 300,
+      "ingredients": ["салями", "руккола", "помидоры", "оливки"],
+      "image": "https://cdn-bucket.hb.ru-msk.vkcs.cloud/purple-images/demo/food/food1.png",
+      "rating": 4.7
+  }
+{{else}}
+    {{! You can set the status conditionally from here with the 'setStatus' helper }}
+    {{setStatus 404}}
+    {
+        "error": "Not found error",
+        "message": "Cat not found"
+    }
+{{/is}}
