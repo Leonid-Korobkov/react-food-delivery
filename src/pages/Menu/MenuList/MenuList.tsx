@@ -11,7 +11,7 @@ function MenuList(props: MenuListProps) {
       key={p.id}
       id={p.id}
       name={p.name}
-      description={p.ingredients.join(', ')}
+      description={p.ingredients}
       image={p.image}
       price={p.price}
       rating={p.rating}

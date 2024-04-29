@@ -7,6 +7,8 @@ import Cart from './pages/Cart/Cart'
 import Error from './pages/Error/Error'
 import Layout from './layout/Menu/Menu'
 import Product from './pages/Product/Product'
+import axios from 'axios'
+import { baseUrl } from './helpers/API'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/product/:id',
-        element: <Product />
+        element: <Product />,
+        loader: async ({ params }) => {
+          const { data } = await axios.get(`${baseUrl}/products/${params.id}`)
+          return data
+        }
       }
     ]
   },

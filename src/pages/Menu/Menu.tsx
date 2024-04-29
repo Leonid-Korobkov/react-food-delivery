@@ -33,7 +33,10 @@ function Menu() {
       setIsLoading(true)
       const { data } = await axios.get<IProduct[]>(`${baseUrl}/products`)
       setProducts(data)
+
+      //* Искуственная задержка, если нужно продемонстрировать лоадер
       //await new Promise((resolve) => setTimeout(resolve, 10000))
+
       setIsLoading(false)
     } catch (e) {
       console.log(e)
