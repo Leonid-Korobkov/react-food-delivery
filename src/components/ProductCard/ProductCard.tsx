@@ -11,7 +11,7 @@ interface ProductCardProps {
   image: string
   price: number
   rating: number
-  style: CSSProperties
+  style?: CSSProperties,
 }
 
 function ProductCard(props: ProductCardProps) {
