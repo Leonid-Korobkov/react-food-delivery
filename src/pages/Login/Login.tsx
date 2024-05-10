@@ -17,7 +17,7 @@ export type LoginForm = {
 }
 
 function Login() {
-  const [error, setError] = useState<string | nullr>()
+  const [error, setError] = useState<string | null>()
 
   function submit(e: FormEvent) {
     e.preventDefault()

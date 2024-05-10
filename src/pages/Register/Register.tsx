@@ -1,4 +1,3 @@
-import st from './Login.module.css'
 
 function Register() {
   return (
