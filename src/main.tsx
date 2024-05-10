@@ -9,6 +9,9 @@ import Product from './pages/Product/Product'
 import axios from 'axios'
 import { baseUrl } from './helpers/API'
 import Loader from './components/Loader/Loader'
+import AuthLayout from './layout/Auth/Auth'
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 
 const Menu = lazy(() => import('./pages/Menu/Menu'))
 
@@ -48,6 +51,20 @@ const router = createBrowserRouter([
           // const { data } = await axios.get(`${baseUrl}/products/${params.id}`)
           // return data
         }
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <Login/>
+      },
+      {
+        path: 'register',
+        element: <Register/>
       }
     ]
   },

@@ -1,5 +1,5 @@
-import ProductCard from '../../../components/ProductCard/ProductCard'
-import { IProduct } from '../../../interfaces/IProduct'
+import ProductCard from '../ProductCard/ProductCard.tsx'
+import {IProduct} from '../../interfaces/IProduct.ts'
 
 interface MenuListProps {
   products: IProduct[]
@@ -15,7 +15,7 @@ function MenuList(props: MenuListProps) {
       image={p.image}
       price={p.price}
       rating={p.rating}
-      style={{ animationDelay: `${index * 0.1}s` }} // добавляем задержку
+      style={{animationDelay: `${index * 0.1}s`}} // добавляем задержку
     />
   ))
 }

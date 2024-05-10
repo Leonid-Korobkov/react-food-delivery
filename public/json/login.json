@@ -1,0 +1,38 @@
+{{#is request.body.email 'a@gmail.com'}}
+{
+  {is request.body.password '123'}
+  {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTcxNTM2ODc2MiwiZXhwIjoxNzE1MzcyMzYyfQ.8nMFbQUtGcNQM21Hff_RBICqshAgerilNJr8wrKvky8"
+  }
+}
+{{else}}
+{{! You can set the status conditionally from here with the 'setStatus' helper }}
+{{setStatus 404}}
+{
+  "error": "Not found error",
+  "message": "Product not found"
+}
+{{/is}}
+
+
+
+
+{{#is request.body.email 'a@gmail.com'}}
+  {{#is request.body.password '123'}}
+    {
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTcxNTM2ODc2MiwiZXhwIjoxNzE1MzcyMzYyfQ.8nMFbQUtGcNQM21Hff_RBICqshAgerilNJr8wrKvky8"
+    }
+  {{else}}
+    {{setStatus 401}}
+    {
+      "error": "Неверный пароль",
+      "message": "Пожалуйста введите верый пароль."
+    }
+  {{/is}}
+{{else}}
+  {{setStatus 401}}
+  {
+    "error": "Неверный адрес электронной почты",
+    "message": "Пожалуйста введите верный адрес электронной почты."
+  }
+{{/is}}

@@ -1,12 +1,12 @@
-import { ReactNode, useEffect, useState } from 'react'
+import {ReactNode, useEffect, useState} from 'react'
 import Heading from '../../components/Heading/Heading'
 import Search from '../../components/Search/Search'
-import { baseUrl } from '../../helpers/API'
+import {baseUrl} from '../../helpers/API'
 import st from './Menu.module.css'
-import { IProduct } from '../../interfaces/IProduct'
-import axios, { AxiosError } from 'axios'
+import {IProduct} from '../../interfaces/IProduct'
+import axios, {AxiosError} from 'axios'
 import ProductSkeleton from '../../components/Skeletons/ProductSkeleton/ProductSkeleton.tsx'
-import MenuList from './MenuList/MenuList.tsx'
+import MenuList from '../../components/MenuList/MenuList.tsx'
 
 function Menu() {
   const [products, setProducts] = useState<IProduct[]>([])
@@ -19,19 +19,19 @@ function Menu() {
     if (connection) {
       const speed = connection.downlink // Скорость загрузки в мегабитах в секунду
       if (speed) {
-        setLoaderSkeleton(speed > 1.5 ? [] : Array.from({ length: 10 }, (_, i) => <ProductSkeleton key={i} />))
+        setLoaderSkeleton(speed > 1.5 ? [] : Array.from({length: 10}, (_, i) => <ProductSkeleton key={i}/>))
       }
     } else {
       // API navigator.connection не поддерживается
       console.log('API navigator.connection не поддерживается')
-      setLoaderSkeleton(Array.from({ length: 10 }, (_, i) => <ProductSkeleton key={i} />))
+      setLoaderSkeleton(Array.from({length: 10}, (_, i) => <ProductSkeleton key={i}/>))
     }
   }, [])
 
   async function getProducts() {
     try {
       setIsLoading(true)
-      const { data } = await axios.get<IProduct[]>(`${baseUrl}/products`)
+      const {data} = await axios.get<IProduct[]>(`${baseUrl}/products`)
       setProducts(data)
 
       //* Искуственная задержка, если нужно продемонстрировать лоадер
@@ -64,7 +64,7 @@ function Menu() {
 
         {isLoading && !isError && loaderSkeleton}
 
-        {!isLoading && <MenuList products={products} />}
+        {!isLoading && <MenuList products={products}/>}
       </div>
     </>
   )
