@@ -7,6 +7,9 @@ import { FormEvent, useState } from 'react'
 import axios, { AxiosError } from 'axios'
 import { baseUrl } from '../../helpers/API'
 import { ILoginResponse } from '../../interfaces/ILoginResponse'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../store/store'
+import { userActions } from '../../store/user.slice'
 
 export type LoginForm = {
   email: {
@@ -20,6 +23,7 @@ export type LoginForm = {
 function Login() {
   const [error, setError] = useState<string | null>()
   const navigate = useNavigate()
+  const dispath = useDispatch<AppDispatch>()
 
   function submit(e: FormEvent) {
     e.preventDefault()
@@ -37,9 +41,9 @@ function Login() {
         email,
         password
       })
-      console.log(data)
+
       if (data.data.access_token) {
-        localStorage.setItem('token', data.data.access_token)
+        dispath(userActions.login(data.data.access_token))
         navigate('/')
       }
     } catch (e) {

@@ -7,7 +7,7 @@ function Layout() {
   const navigate = useNavigate()
 
   function logout() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('userData')
     navigate('/auth/login')
   }
   return (
