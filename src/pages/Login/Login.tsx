@@ -35,11 +35,7 @@ function Login() {
     const target = e.target as typeof e.target & LoginForm
     const { email, password } = target
 
-    sendLogin(email.value, password.value)
-  }
-
-  async function sendLogin(email: string, password: string) {
-    dispath(login({ email, password }))
+    dispath(login({ email: email.value, password: password.value }))
   }
 
   return (
