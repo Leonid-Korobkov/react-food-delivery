@@ -1,106 +1,73 @@
-.head {
-  position: relative;
-  border-radius: 19px;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  position: relative;
-  width: 100%; 
-  height: 0;
-  padding-top: 56.25%; /* Задаем высоту как 56.25% от ширины (16:9 соотношение сторон) */
-  border-radius: 19px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
 }
 
-.card {
-  background: var(--white-color);
-  border-radius: 19px;
-  box-shadow: 18.21428680419922px 18.21428680419922px 36.42857360839844px 0px rgba(211, 209, 216, 0.25);
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease 0s;
-  animation: fadeIn 0.6s ease forwards;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .back {
   width: 30px;
   height: 30px;
-  display: block;
-  margin-bottom: 20px;
-  
   img {
     max-width: 100%;
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+.headerText {
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.row:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.addToCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+@media (any-hover: hover) {
+  .addToCart:hover {
+    background: var(--primary-hover-color);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+
+.imageContainer {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .cardImage {
   transition: all 1s ease 0s;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   object-fit: cover;
   object-position: center;
 }
 
-.footer {
-  padding: 12px 12px 20px 12px;
-}
-
-.title {
+.price {
   color: var(--text-color);
   font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin: 15px 0 10px;
-  text-align: center;
-}
-
-.description {
-  color: var(--text-secondary-color);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.link {
-  text-decoration: none;
-}
-
-.price {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: var(--white-color);
-  padding: 3px 10px;
-  border-radius: 20px;
-  color: #111719;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .currency {
@@ -108,37 +75,45 @@
 }
 
 .rating {
-  position: absolute;
-  bottom: -12px;
-  left: 15px;
-  background: var(--white-color);
-  padding: 3px 8px;
-  border-radius: 20px;
-  color: #111719;
-  font-size: 16px;
+  color: var(--text-color);
+  font-size: 24px;
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  img {
+    width: 20px;
+  }
+}
+
+.ingredients {
+  color: var(--text-secondary-color);
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  box-shadow: 0px 6.0714287757873535px 24.285715103149414px 0px rgba(254, 114, 76, 0.2);
 }
 
-.addToCart {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease 0s, transform 0.3s ease 0s, border-radius 0.3s ease 0s;
+.title {
+  color: var(--text-color);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
-@media (any-hover: hover) {
-  .addToCart:hover {
-    background: var(--primary-hover-color);
-    transform: scale(1.9);
-    border-radius: 10px;
+ul {
+  padding-left: 20px;
+  margin: 10px 0 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
   }
 }

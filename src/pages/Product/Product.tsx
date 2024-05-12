@@ -5,6 +5,8 @@ import { Suspense, useState } from 'react'
 import Loader from '../../components/Loader/Loader.tsx'
 import cn from 'classnames'
 import Skeleton from '../../components/Skeletons/Skeleton/Skeleton.tsx'
+import Heading from '../../components/Heading/Heading.tsx'
+import Button from '../../components/Button/Button.tsx'
 
 function Product() {
   const data = useLoaderData() as { data: IProduct }
@@ -16,48 +18,67 @@ function Product() {
 
   return (
     <Suspense fallback={<Loader />}>
-      {/* to home */}
-      <Link to="/" className={st.back}><img src="/back.png" alt="Иконка назад" /></Link>
       <Await resolve={data.data}>
         {({ data }: { data: IProduct }) => (
-          <div className={cn(st.card)}>
-            <div className={st.head}>
-              <img
-                style={{ opacity: imageLoaded ? '1' : '0' }}
-                className={st.cardImage}
-                src={data.image}
-                alt={data.name}
-                onLoad={handleImageLoad}
-              />
-              {!imageLoaded && (
-                <Skeleton
-                  width="100%"
-                  height="100%"
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    right: 0,
-                    top: 0
-                  }}
-                />
-              )}
-              <div className={st.price}>
-                {data.price}&nbsp;
-                <span className={st.currency}>₽</span>
-              </div>
-              <button className={st.addToCart}>
+          <>
+            <div className={st.header}>
+              <Link to="/" className={st.back}>
+                <img src="/back.png" alt="Иконка назад" />
+              </Link>
+              <Heading>{data.name}</Heading>
+              <Button className={st.addToCart}>
                 <img src="/cart-button-icon.svg" alt="Добавить в корзину" />
-              </button>
-              <div className={st.rating}>
-                {data.rating}&nbsp;
-                <img src="/star-icon.svg" alt="Иконка звезды" />
+                <span>Добавить в корзину</span>
+              </Button>
+            </div>
+            <div className={st.container}>
+              <div className={st.imageContainer}>
+                <img
+                  style={{ opacity: imageLoaded ? '1' : '0' }}
+                  className={st.cardImage}
+                  src={data.image}
+                  alt={data.name}
+                  onLoad={handleImageLoad}
+                />
+                {!imageLoaded && (
+                  <Skeleton
+                    width="100%"
+                    height="100%"
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      right: 0,
+                      top: 0
+                    }}
+                  />
+                )}
+              </div>
+              <div className={st.details}>
+                <div className={st.row}>
+                  <div className={st.title}>Цена:</div>
+                  <div className={st.price}>
+                    {data.price} <span className={st.currency}>₽</span>
+                  </div>
+                </div>
+
+                <div className={st.row}>
+                  <div className={st.title}>Рейтинг:</div>
+                  <div className={st.rating}>
+                    {data.rating} <img src="/star-icon.svg" alt="Иконка звезды" />
+                  </div>
+                </div>
+
+                <div className={st.ingredients}>
+                  <div className={st.title}>Состав:</div>
+                  <ul>
+                    {data.ingredients.split(', ').map((ingredient, index) => (
+                      <li key={index}>{ingredient}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-            <div className={st.footer}>
-              <div className={st.title}>{data.name}</div>
-              <div className={st.description}>{data.ingredients.split(', ').join(' ✦ ')}</div>
-            </div>
-          </div>
+          </>
         )}
       </Await>
     </Suspense>
