@@ -1,7 +1,6 @@
-import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import st from './Menu.module.css'
 import Button from '../../components/Button/Button'
-import { useEffect } from 'react'
 import cn from 'classnames'
 
 function Layout() {
