@@ -1,11 +1,7 @@
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import st from './Auth.module.css'
-import { useEffect } from 'react'
 
 function AuthLayout() {
-  const location = useLocation()
-
-  useEffect(() => {}, [location])
 
   return (
     <div className={st.layout}>

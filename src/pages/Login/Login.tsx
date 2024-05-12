@@ -3,13 +3,10 @@ import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import st from './Login.module.css'
 import Heading from '../../components/Heading/Heading'
-import { FormEvent, useState } from 'react'
-import axios, { AxiosError } from 'axios'
-import { baseUrl } from '../../helpers/API'
-import { ILoginResponse } from '../../interfaces/ILoginResponse'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../store/store'
-import { userActions } from '../../store/user.slice'
+import { FormEvent, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../../store/store'
+import { login, userActions } from '../../store/user.slice'
 
 export type LoginForm = {
   email: {
@@ -21,13 +18,19 @@ export type LoginForm = {
 }
 
 function Login() {
-  const [error, setError] = useState<string | null>()
   const navigate = useNavigate()
   const dispath = useDispatch<AppDispatch>()
+  const { jwt, loginErrorMessage } = useSelector((state: RootState) => state.user)
+
+  useEffect(() => {
+    if (jwt) {
+      navigate('/')
+    }
+  }, [jwt, navigate])
 
   function submit(e: FormEvent) {
     e.preventDefault()
-    setError(null)
+    dispath(userActions.clearLoginError())
 
     const target = e.target as typeof e.target & LoginForm
     const { email, password } = target
@@ -36,28 +39,13 @@ function Login() {
   }
 
   async function sendLogin(email: string, password: string) {
-    try {
-      const data = await axios.post<ILoginResponse>(`${baseUrl}/login`, {
-        email,
-        password
-      })
-
-      if (data.data.access_token) {
-        dispath(userActions.login(data.data.access_token))
-        navigate('/')
-      }
-    } catch (e) {
-      if (e instanceof AxiosError) {
-        console.log(e)
-        setError(e.response?.data.error)
-      }
-    }
+    dispath(login({ email, password }))
   }
 
   return (
     <div className={st.login}>
       <Heading>Вход</Heading>
-      {error && <div className={st.error}>{error}</div>}
+      {loginErrorMessage && <div className={st.error}>{loginErrorMessage}</div>}
       <form className={st.form} onSubmit={submit}>
         <div className={st.field}>
           <label htmlFor="email">Ваш email</label>
