@@ -42,7 +42,7 @@ function Layout() {
 
           {!profile ? (
             <>
-              <Skeleton width="60%" height="23px" style={{ margin: '0 auto 5px' }} />
+              <Skeleton width="60%" height="23px" style={{ margin: '20px auto 5px' }} />
               <Skeleton width="75%" height="16px" style={{ margin: '0 auto' }} />
             </>
           ) : (
