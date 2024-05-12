@@ -5,7 +5,14 @@ import { saveState } from './storage'
 export const store = configureStore({
   reducer: {
     user: userSlice
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ['user/getProfile/fulfilled', 'user/login/fulfilled']
+      }
+    })
 })
 
 store.subscribe(() => {

@@ -3,6 +3,7 @@ import { loadState } from './storage'
 import axios, { AxiosError } from 'axios'
 import { baseUrl } from '../helpers/API'
 import { ILoginResponse } from '../interfaces/ILoginResponse'
+import { IProfile } from '../interfaces/IProfile'
 
 export interface UserPersistentState {
   token: string | null
@@ -11,6 +12,7 @@ export interface UserPersistentState {
 export interface UserState {
   jwt: string | null
   loginErrorMessage?: string
+  profile?: IProfile
 }
 const initialState: UserState = {
   jwt: loadState<UserPersistentState>('userData')?.token ?? null
@@ -31,6 +33,15 @@ export const login = createAsyncThunk('user/login', async (params: { email: stri
   }
 })
 
+export const getProfile = createAsyncThunk('user/getProfile', async () => {
+  const data = await axios.get<IProfile>(`${baseUrl}/user/profile`, {
+    headers: {
+      Authorization: `Bearer ${loadState<UserPersistentState>('userData')?.token}`
+    }
+  })
+  return data
+})
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -49,6 +60,10 @@ export const userSlice = createSlice({
     })
     builder.addCase(login.rejected, (state, action) => {
       state.loginErrorMessage = action.error?.message ?? 'Unknown error occurred'
+    })
+
+    builder.addCase(getProfile.fulfilled, (state, action) => {
+      state.profile = action.payload?.data ?? null
     })
   }
 })

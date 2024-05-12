@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "password": 123,
+  "email": "a@gmail.com",
+  "address": "Санкт-Петербург",
+  "name": "Леонид",
+  "restoreToken": null,
+  "phone": "89219999999"
+}
