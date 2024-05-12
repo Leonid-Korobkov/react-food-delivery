@@ -1,5 +1,7 @@
+import Heading from '../../components/Heading/Heading'
+
 function Cart() {
-  return ( <div>Cart</div> );
+  return <Heading>Корзина</Heading>
 }
 
-export default Cart;
+export default Cart

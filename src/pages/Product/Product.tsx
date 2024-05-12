@@ -1,4 +1,4 @@
-import { Await, useLoaderData } from 'react-router-dom'
+import { Await, Link, useLoaderData } from 'react-router-dom'
 import st from './Product.module.css'
 import { IProduct } from '../../interfaces/IProduct'
 import { Suspense, useState } from 'react'
@@ -16,6 +16,8 @@ function Product() {
 
   return (
     <Suspense fallback={<Loader />}>
+      {/* to home */}
+      <Link to="/" className={st.back}><img src="/back.png" alt="Иконка назад" /></Link>
       <Await resolve={data.data}>
         {({ data }: { data: IProduct }) => (
           <div className={cn(st.card)}>

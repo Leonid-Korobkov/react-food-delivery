@@ -1,14 +1,16 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import st from './Menu.module.css'
 import Button from '../../components/Button/Button'
 import { useEffect } from 'react'
 import cn from 'classnames'
 
 function Layout() {
-  const location = useLocation()
+  const navigate = useNavigate()
 
-  useEffect(() => {}, [location])
-
+  function logout() {
+    localStorage.removeItem('token')
+    navigate('/auth/login')
+  }
   return (
     <div className={st.layout}>
       <div className={st.sidebar}>
@@ -27,7 +29,7 @@ function Layout() {
             Корзина
           </NavLink>
         </div>
-        <Button className={st.exit}>
+        <Button className={st.exit} onClick={logout}>
           <img src="/exit-icon.svg" alt="Иконка выходы" />
           <span>Выйти</span>
         </Button>

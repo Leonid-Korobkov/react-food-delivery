@@ -12,6 +12,7 @@ import Loader from './components/Loader/Loader'
 import AuthLayout from './layout/Auth/Auth'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
+import RequireAuth from './helpers/RequireAuth'
 
 const Menu = lazy(() => import('./pages/Menu/Menu'))
 
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/cart',
-        element: <Cart />
+        element: (
+          <RequireAuth>
+            <Cart />
+          </RequireAuth>
+        )
       },
       {
         path: '/',
@@ -60,11 +65,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login/>
+        element: <Login />
       },
       {
         path: 'register',
-        element: <Register/>
+        element: <Register />
       }
     ]
   },
