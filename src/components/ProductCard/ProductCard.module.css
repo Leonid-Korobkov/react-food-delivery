@@ -12,10 +12,15 @@
   box-shadow: 18.21428680419922px 18.21428680419922px 36.42857360839844px 0px rgba(211, 209, 216, 0.25);
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease 0s;
-  animation: fadeIn 0.6s ease forwards;
+}
+
+@media (min-width: 540px) {
+  .card {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+    transition: all 0.6s ease 0s;
+  }
 }
 @media (any-hover: hover) {
   .card:hover {
@@ -111,6 +116,9 @@
 
 .addToCart {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 15px;
   right: 15px;
   background: var(--primary-color);
