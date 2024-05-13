@@ -12,21 +12,24 @@ function Layout() {
   const navigate = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
   const profile = useSelector((state: RootState) => state.user.profile)
+  const cart = useSelector((state: RootState) => state.cart)
 
   const [imageUserLoaded, setImageUserLoaded] = useState<boolean>(false)
 
+  const countCartProducts = cart.products.reduce((acc, p) => (acc += p.count), 0)
   const handleImageUserLoad = () => {
     setImageUserLoaded(true)
   }
 
   useEffect(() => {
     dispatch(getProfile())
-  }, [])
+  }, [dispatch])
 
   function logout() {
     dispatch(userActions.logout())
     navigate('/auth/login')
   }
+
   return (
     <div className={st.layout}>
       <div className={st.sidebar}>
@@ -60,6 +63,7 @@ function Layout() {
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/cart'}>
             <img src="/cart-icon.svg" alt="Иконка корзины" />
             Корзина
+            <div className={st['cart-count']}>{countCartProducts}</div>
           </NavLink>
         </div>
         <Button className={st.exit} onClick={logout}>

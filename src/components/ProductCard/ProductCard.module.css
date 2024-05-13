@@ -128,12 +128,21 @@
   border: none;
   cursor: pointer;
   transition: background 0.3s ease 0s, transform 0.3s ease 0s, border-radius 0.3s ease 0s;
-}
 
+  img {
+    transform: translateY(-1px);
+  }
+}
+.activeProduct {
+  background: var(--primary-active-color);
+}
 @media (any-hover: hover) {
   .addToCart:hover {
     background: var(--primary-hover-color);
     transform: scale(1.9);
     border-radius: 10px;
+  }
+  .activeProduct:hover {
+    background: var(--primary-active-hover-color);
   }
 }

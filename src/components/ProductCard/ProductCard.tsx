@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
 import st from './ProductCard.module.css'
-import { CSSProperties, useState } from 'react'
+import { CSSProperties, MouseEvent, useState } from 'react'
 import Skeleton from '../Skeletons/Skeleton/Skeleton'
 import cn from 'classnames'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../store/store'
+import { CartActions } from '../../store/cart.slice'
 
 interface ProductCardProps {
   id: number
@@ -11,14 +14,23 @@ interface ProductCardProps {
   image: string
   price: number
   rating: number
-  style?: CSSProperties,
+  style?: CSSProperties
 }
 
 function ProductCard(props: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false)
+  const dispatch = useDispatch<AppDispatch>()
 
   const handleImageLoad = () => {
     setImageLoaded(true)
+  }
+
+  function addToCart(event: MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    event.stopPropagation()
+    dispatch(CartActions.addProduct(props.id))
+
+    event.currentTarget.classList.add(st.activeProduct)
   }
 
   return (
@@ -37,7 +49,7 @@ function ProductCard(props: ProductCardProps) {
             {props.price}&nbsp;
             <span className={st.currency}>₽</span>
           </div>
-          <button className={st.addToCart}>
+          <button className={st.addToCart} onClick={addToCart}>
             <img src="/cart-button-icon.svg" alt="Добавить в корзину" />
           </button>
           <div className={st.rating}>
