@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
 import { RootState } from '../../store/store'
 
@@ -9,6 +9,7 @@ import { IProduct } from '../../interfaces/IProduct'
 import Heading from '../../components/Heading/Heading'
 import CartProduct from '../../components/CartProduct/CartProduct'
 import { baseUrl } from '../../helpers/API'
+import { useSelector } from 'react-redux'
 
 function Cart() {
   const products = useSelector((state: RootState) => state.cart.products)
@@ -26,7 +27,7 @@ function Cart() {
 
   useEffect(() => {
     loadAllProducts()
-  })
+  }, [products])
 
   return (
     <>

@@ -30,7 +30,7 @@ function ProductCard(props: ProductCardProps) {
 
   useEffect(() => {
     const isAdded = allProducts.find((p) => p.id === props.id)
-    console.log(isAdded)
+
     if (isAdded) {
       setAddedToCart(true)
     }

@@ -75,7 +75,12 @@
   width: 100%;
 }
 
-.cart-count {
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cartCount {
   background: var(--primary-color);
   border-radius: 50%;
   width: 20px;

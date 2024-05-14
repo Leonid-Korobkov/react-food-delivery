@@ -62,8 +62,10 @@ function Layout() {
           </NavLink>
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/cart'}>
             <img src="/cart-icon.svg" alt="Иконка корзины" />
-            Корзина
-            <div className={st['cart-count']}>{countCartProducts}</div>
+            <span className={st.cart}>
+              Корзина
+              <div className={st.cartCount}>{countCartProducts}</div>
+            </span>
           </NavLink>
         </div>
         <Button className={st.exit} onClick={logout}>
