@@ -36,7 +36,7 @@ function Cart() {
         if (!product) {
           return
         }
-        return <CartProduct count={i.count} {...product} />
+        return <CartProduct key={i.id} count={i.count} {...product} />
       })}
     </>
   )
