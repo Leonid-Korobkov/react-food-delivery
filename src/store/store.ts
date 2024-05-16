@@ -19,6 +19,7 @@ export const store = configureStore({
 
 store.subscribe(() => {
   saveState('userData', { token: store.getState().user.jwt })
+  saveState('cart', store.getState().cart)
 })
 
 export type RootState = ReturnType<typeof store.getState>
