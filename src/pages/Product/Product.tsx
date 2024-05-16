@@ -1,15 +1,41 @@
-import { Await, Link, useLoaderData } from 'react-router-dom'
+import { Await, Link, useLoaderData, useParams } from 'react-router-dom'
 import st from './Product.module.css'
 import { IProduct } from '../../interfaces/IProduct'
-import { Suspense, useState } from 'react'
+import { MouseEvent, Suspense, useEffect, useState } from 'react'
 import Loader from '../../components/Loader/Loader.tsx'
 import Skeleton from '../../components/Skeletons/Skeleton/Skeleton.tsx'
 import Heading from '../../components/Heading/Heading.tsx'
 import Button from '../../components/Button/Button.tsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../../store/store.ts'
+import { CartActions } from '../../store/cart.slice.ts'
+import cn from 'classnames'
 
 function Product() {
   const data = useLoaderData() as { data: IProduct }
+
+  const { id } = useParams<{ id: string }>()
+
   const [imageLoaded, setImageLoaded] = useState<boolean>(false)
+  const [addedToCart, setAddedToCart] = useState<boolean>(false)
+
+  const allProducts = useSelector((state: RootState) => state.cart.products)
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    const isAdded = allProducts.find((p) => p.id.toString() === id)
+
+    if (isAdded) {
+      setAddedToCart(true)
+    }
+  }, [allProducts, id])
+
+  function addToCart(event: MouseEvent<HTMLButtonElement>, productId: number) {
+    event.preventDefault()
+    event.stopPropagation()
+
+    dispatch(CartActions.addProduct(productId))
+  }
 
   const handleImageLoad = () => {
     setImageLoaded(true)
@@ -25,9 +51,9 @@ function Product() {
                 <img src="/back.png" alt="Иконка назад" />
               </Link>
               <Heading>{data.name}</Heading>
-              <Button className={st.addToCart}>
+              <Button className={cn(st.addToCart, { [st.activeProduct]: addedToCart })} onClick={(e) => addToCart(e, data.id)}>
                 <img src="/cart-button-icon.svg" alt="Добавить в корзину" />
-                <span>Добавить в корзину</span>
+                <span>{addedToCart ? 'В корзине' : 'Добавить в корзину'}</span>
               </Button>
             </div>
             <div className={st.container}>

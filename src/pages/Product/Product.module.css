@@ -118,3 +118,12 @@ ul li {
     grid-template-columns: 1fr;
   }
 }
+
+.activeProduct {
+  background: var(--primary-active-color);
+}
+@media (any-hover: hover) {
+  .activeProduct:hover {
+    background: var(--primary-active-hover-color);
+  }
+}

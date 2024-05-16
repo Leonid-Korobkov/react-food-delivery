@@ -40,8 +40,6 @@ function ProductCard(props: ProductCardProps) {
     event.preventDefault()
     event.stopPropagation()
     dispatch(CartActions.addProduct(props.id))
-
-    event.currentTarget.classList.add(st.activeProduct)
   }
 
   return (
