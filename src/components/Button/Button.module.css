@@ -28,6 +28,6 @@
 @media (any-hover: hover) {
   .btn--accent:hover {
     background: var(--primary-hover-color);
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
 }
