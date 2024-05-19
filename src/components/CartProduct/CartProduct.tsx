@@ -1,6 +1,6 @@
 import { CartActions } from '../../store/cart.slice'
 import { AppDispatch } from '../../store/store'
-import styles from './CartProduct.module.css'
+import st from './CartProduct.module.css'
 import { useDispatch } from 'react-redux'
 
 interface CartProductProps {
@@ -18,27 +18,32 @@ function CartProduct(props: CartProductProps) {
     dispatch(CartActions.addProduct(props.id))
   }
 
-  const descrease = () => {}
+  const descrease = () => {
+    dispatch(CartActions.removeProduct(props.id))
+  }
 
-  const remove = () => {}
+  const clearAllProduct = () => {
+    dispatch(CartActions.clearProduct(props.id))
+  }
 
   return (
-    <div className={styles.item}>
-      <div className={styles.image} style={{ backgroundImage: `url('${props.image}')` }}></div>
-      <div className={styles.description}>
-        <div className={styles.name}>{props.name}</div>
-        <div className={styles.currency}>{props.price}&nbsp;₽</div>
+    <div className={st.item}>
+      <div className={st.image} style={{ backgroundImage: `url('${props.image}')` }}></div>
+      <div className={st.description}>
+        <div className={st.name}>{props.name}</div>
+        <div className={st.price}>{props.price}&nbsp;₽</div>
       </div>
-      <div className={styles.actions}>
-        <button className={styles.button} onClick={descrease}>
-          <img src="/cart-button-icon.svg" alt="Удалить из корзины" />
+
+      <div className={st.actions}>
+        <button className={st.minus} onClick={descrease}>
+          <img src="/minus-icon.svg" alt="Удалить из корзины" />
         </button>
-        <div>{props.count}</div>
-        <button className={styles.button} onClick={increase}>
-          <img src="/cart-button-icon.svg" alt="Добавить в корзину" />
+        <div className={st.number}>{props.count}</div>
+        <button className={st.plus} onClick={increase}>
+          <img src="/plus-icon.svg" alt="Добавить в корзину" />
         </button>
-        <button className={styles.remove} onClick={remove}>
-          <img src="/cart-button-icon.svg" alt="Удалить все" />
+        <button className={st.remove} onClick={clearAllProduct}>
+          <img src="/delete-icon.svg" alt="Удалить все" />
         </button>
       </div>
     </div>

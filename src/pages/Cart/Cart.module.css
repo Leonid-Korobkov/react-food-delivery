@@ -1,0 +1,22 @@
+.heading {
+  margin-bottom: 40px !important;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 400;
+  }
+}

@@ -17,6 +17,7 @@ function Layout() {
   const [imageUserLoaded, setImageUserLoaded] = useState<boolean>(false)
 
   const countCartProducts = cart.products.reduce((acc, p) => (acc += p.count), 0)
+  
   const handleImageUserLoad = () => {
     setImageUserLoaded(true)
   }

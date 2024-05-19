@@ -1,9 +1,6 @@
-// import { useSelector } from 'react-redux'
-
+import st from './Cart.module.css'
 import { RootState } from '../../store/store'
-
 import { useEffect, useState } from 'react'
-
 import axios from 'axios'
 import { IProduct } from '../../interfaces/IProduct'
 import Heading from '../../components/Heading/Heading'
@@ -31,14 +28,21 @@ function Cart() {
 
   return (
     <>
-      <Heading>Корзина</Heading>
-      {products.map((i) => {
-        const product = cartProducts.find((p) => p.id === i.id)
-        if (!product) {
-          return
-        }
-        return <CartProduct key={i.id} count={i.count} {...product} />
-      })}
+      <Heading className={st.heading}>Корзина</Heading>
+      {products.length == 0 ? (
+        <div className={st.empty}>
+          <img src='/cart-basket.png'/>
+          <span>Ваша корзина пуста</span>
+        </div>
+      ) : (
+        products.map((i) => {
+          const product = cartProducts.find((p) => p.id === i.id)
+          if (!product) {
+            return
+          }
+          return <CartProduct key={i.id} count={i.count} {...product} />
+        })
+      )}
     </>
   )
 }

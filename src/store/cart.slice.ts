@@ -16,10 +16,27 @@ export const CartSlice = createSlice({
   name: 'Cart',
   initialState,
   reducers: {
+    clearProduct: (state, action: PayloadAction<number>) => {
+      const index = state.products.findIndex((p) => p.id === action.payload)
+      state.products.splice(index, 1)
+    },
+
+    removeProduct: (state, action: PayloadAction<number>) => {
+      const product = state.products.find((p) => p.id === action.payload)
+
+      if (product && product.count > 1) {
+        product.count--
+      } else {
+        const index = state.products.findIndex((p) => p.id === action.payload)
+        state.products.splice(index, 1)
+      }
+    },
+
     addProduct: (state, action: PayloadAction<number>) => {
       const product = state.products.find((p) => p.id === action.payload)
+
+      // если есть такой продукт
       if (product) {
-        // если есть такой продукт
         product.count++
       } else {
         state.products.push({ id: action.payload, count: 1 })
