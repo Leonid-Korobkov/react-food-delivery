@@ -22,6 +22,24 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  flex-direction: column;
+}
+
+.backHome {
+  align-self: start;
+  margin-bottom: 20px;
+}
+
+.linkToHome {
+  display: flex;
+  align-items: center;
+  color: var(--primary-color);
+  font-size: 14px;
+  text-decoration: none;
+
+  img {
+    width: 20px;
+  }
 }
 
 @media (max-width: 768px) {

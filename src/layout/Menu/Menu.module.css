@@ -147,7 +147,7 @@
 
   .menu {
     flex-direction: row;
-    gap: 25px;
+    gap: 15px;
     margin: 0;
     flex: 1 1 auto;
   }

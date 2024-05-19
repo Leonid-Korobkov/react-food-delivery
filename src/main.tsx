@@ -15,6 +15,7 @@ import Register from './pages/Register/Register'
 import RequireAuth from './helpers/RequireAuth'
 import { store } from './store/store' 
 import { Provider } from 'react-redux'
+import { Success } from './pages/Success/Success'
 
 const Menu = lazy(() => import('./pages/Menu/Menu'))
 
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
         element: <Register />
       }
     ]
+  },
+  {
+    path: '/success',
+    element: <Success/>
   },
   {
     path: '*',

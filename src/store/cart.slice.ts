@@ -16,6 +16,10 @@ export const CartSlice = createSlice({
   name: 'Cart',
   initialState,
   reducers: {
+    clearCart: (state) => {
+      state.products = []
+    },
+
     clearProduct: (state, action: PayloadAction<number>) => {
       const index = state.products.findIndex((p) => p.id === action.payload)
       state.products.splice(index, 1)

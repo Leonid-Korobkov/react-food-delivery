@@ -53,7 +53,7 @@ function Product() {
               <Heading>{data.name}</Heading>
               <Button className={cn(st.addToCart, { [st.activeProduct]: addedToCart })} onClick={(e) => addToCart(e, data.id)}>
                 <img src="/cart-button-icon.svg" alt="Добавить в корзину" />
-                <span>{addedToCart ? 'В корзине' : 'Добавить в корзину'}</span>
+                <span>{addedToCart ? 'Добавлено в корзину' : 'Добавить в корзину'}</span>
               </Button>
             </div>
             <div className={st.container}>

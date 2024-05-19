@@ -15,9 +15,10 @@ function Layout() {
   const cart = useSelector((state: RootState) => state.cart)
 
   const [imageUserLoaded, setImageUserLoaded] = useState<boolean>(false)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth) // Track screen width
 
   const countCartProducts = cart.products.reduce((acc, p) => (acc += p.count), 0)
-  
+
   const handleImageUserLoad = () => {
     setImageUserLoaded(true)
   }
@@ -25,6 +26,18 @@ function Layout() {
   useEffect(() => {
     dispatch(getProfile())
   }, [dispatch])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   function logout() {
     dispatch(userActions.logout())
@@ -34,28 +47,31 @@ function Layout() {
   return (
     <div className={st.layout}>
       <div className={st.sidebar}>
-        <div className={st.user}>
-          <img
-            className={st.avatar}
-            src="/avatar.png"
-            alt="Аватар пользователя"
-            style={{ opacity: imageUserLoaded ? '1' : '0' }}
-            onLoad={handleImageUserLoad}
-          />
-          {!imageUserLoaded && <Skeleton width="75px" height="75px" style={{ margin: '0 auto 20px' }} />}
+        {screenWidth > 768 && (
+          <div className={st.user}>
+            <img
+              className={st.avatar}
+              src="/avatar.png"
+              alt="Аватар пользователя"
+              style={{ opacity: imageUserLoaded ? '1' : '0' }}
+              onLoad={handleImageUserLoad}
+            />
+            {!imageUserLoaded && <Skeleton width="75px" height="75px" style={{ margin: '0 auto 20px' }} />}
 
-          {!profile ? (
-            <>
-              <Skeleton width="60%" height="23px" style={{ margin: '20px auto 5px' }} />
-              <Skeleton width="75%" height="16px" style={{ margin: '0 auto' }} />
-            </>
-          ) : (
-            <>
-              <div className={st.name}>{profile?.name}</div>
-              <div className={st.email}>{profile?.email}</div>
-            </>
-          )}
-        </div>
+            {!profile ? (
+              <>
+                <Skeleton width="60%" height="23px" style={{ margin: '20px auto 5px' }} />
+                <Skeleton width="75%" height="16px" style={{ margin: '0 auto' }} />
+              </>
+            ) : (
+              <>
+                <div className={st.name}>{profile?.name}</div>
+                <div className={st.email}>{profile?.email}</div>
+              </>
+            )}
+          </div>
+        )}
+
         <div className={st.menu}>
           <NavLink className={({ isActive }) => cn(st.link, { [st.active]: isActive })} to={'/'}>
             <img src="/menu-icon.svg" alt="Иконка меню" />

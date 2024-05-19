@@ -1,0 +1,14 @@
+{
+  "id": 2,
+  "userId": 1,
+  "status": "new",
+  "createdAt": "2023-08-25T08:21:26.0372",
+  "data": {
+    "products": [
+      {
+        "id": 1,
+        "count": 1
+      }
+    ]
+  }
+}
