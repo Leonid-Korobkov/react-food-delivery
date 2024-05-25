@@ -1,7 +1,7 @@
 import st from './Cart.module.css'
 import { AppDispatch, RootState } from '../../store/store'
 import { useEffect, useState, useMemo, useCallback } from 'react'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { IProduct } from '../../interfaces/IProduct'
 import Heading from '../../components/Heading/Heading'
 import CartProduct from '../../components/CartProduct/CartProduct'
@@ -20,6 +20,7 @@ function Cart() {
 
   const [cartProducts, setCartProducts] = useState<IProduct[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isError, setIsError] = useState<string>()
 
   const navigate = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
@@ -37,9 +38,14 @@ function Cart() {
   }, [])
 
   const loadAllProducts = useCallback(async () => {
-    const res = await Promise.all(products.map((i) => getProductById(i.id)))
-
-    setCartProducts(res)
+    try {
+      const res = await Promise.all(products.map((i) => getProductById(i.id)))
+      setCartProducts(res)
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        setIsError(e.message)
+      }
+    }
     setIsLoading(false)
   }, [getProductById])
 
@@ -62,7 +68,14 @@ function Cart() {
     }
   }
 
-  if (isLoading) {
+  if (isError) {
+    return (
+      <>
+        <Heading className={st.heading}>Корзина</Heading>
+        <div>{isError}</div>
+      </>
+    )
+  } else if (isLoading) {
     return (
       <>
         <Heading className={st.heading}>Корзина</Heading>
