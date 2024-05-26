@@ -9,12 +9,7 @@ export interface CartState {
   products: CartProduct[]
 }
 const initialState: CartState = {
-  products: loadState<CartState>('cart')?.products ?? [
-    { id: 5, count: 9 },
-    { id: 6, count: 1 },
-    { id: 8, count: 1 },
-    { id: 2, count: 4 }
-  ]
+  products: loadState<CartState>('cart')?.products ?? []
 }
 
 export const CartSlice = createSlice({

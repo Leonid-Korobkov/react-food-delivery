@@ -12,7 +12,7 @@ import Loader from './components/Loader/Loader'
 import AuthLayout from './layout/Auth/Auth'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
-// import RequireAuth from './helpers/RequireAuth'
+import RequireAuth from './helpers/RequireAuth'
 import { store } from './store/store' 
 import { Provider } from 'react-redux'
 import { Success } from './pages/Success/Success'
@@ -27,9 +27,9 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: (
-          // <RequireAuth>
+          <RequireAuth>
             <Cart />
-          // </RequireAuth>
+          </RequireAuth>
         )
       },
       {
